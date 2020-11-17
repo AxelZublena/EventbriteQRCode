@@ -16,5 +16,19 @@ function init(){
 
 function diplay(content){
     const data = document.getElementById("qrData");
+    const orderIDField = document.getElementById("orderID");
+    const attendeeIDField = document.getElementById("attendeeID");
+
+    let attendeeID = [];
+    for(let i = 10; i < 20; i++){
+        attendeeID.push(content[i]);
+    }
+    let orderID = [];
+    for(let i=0; i< 10; i++){
+        orderID.push(content[i]);
+    }
+
     data.innerText = content;
+    orderIDField.innerText = orderID.join('');
+    attendeeIDField.innerText = attendeeID.join('');
 }
