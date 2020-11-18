@@ -18,9 +18,11 @@ body{
 }
 .nameInfo {
     width: 550px;
-    padding-left: 10px;
     padding-bottom: 10px;
     padding-top: 15px;
+
+    justify-content: center;
+    display:grid;
 }
 .nameInfo h4 {
     font-size: 30px;
@@ -34,11 +36,12 @@ body{
 }
 
 .dataInfo{
-    padding-left: 25px;
+    justify-content: center;
     display: grid;
     grid-template-columns: 225px 225px;
 }
 .dataInfo p {
+    justify-self: center;
     font-size: 12px;
 }
 
