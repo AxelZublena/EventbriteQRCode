@@ -1,0 +1,54 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+    display: grid;
+}
+
+#tile{
+    background-color: ghostwhite;
+    box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    border-radius: 5%;
+
+    width: 550px;
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.nameInfo {
+    width: 550px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+.nameInfo h4 {
+    font-size: 30px;
+    font-weight: 500;
+    color: dodgerblue;
+    margin: 10px;
+}
+.nameInfo span{
+    color: black;
+    padding-left: 20px;
+}
+
+.dataInfo{
+    padding-left: 25px;
+    display: grid;
+    grid-template-columns: 225px 225px;
+}
+.dataInfo p {
+    font-size: 12px;
+}
+
+/*Image transformation*/
+#webcam{
+    object-fit: cover;
+    height: 550px;
+    width: 550px;
+    border-radius: 5% 5% 0% 0%;
+    border-color: #DDDDDD;
+    border-width: 0px;
+    border-style: solid;
+}

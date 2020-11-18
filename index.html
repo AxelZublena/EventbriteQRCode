@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script type="text/javascript" src="./instascan.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>QR Code Reader</title>
 </head>
 <body>
-    <div id="videoContainer">
+    <div id="tile">
         <video id="webcam" autoplay></video>
+        <div class="nameInfo">
+            <h4>First name: <span id="firstName"></span></h4>
+            <h4>Last name: <span id="lastName"></span></h4>
+        </div>
+        <div class="dataInfo">
+            <p>Data: <span id="qrData"></span></p>
+            <p>Order ID: <span id="orderID"></span></p>
+        </div>
     </div>
-    <p>Data: <span id="qrData"></span></p>
-    <p>Order ID: <span id="orderID"></span></p>
-    <h3>First name: <span id="firstName"></span></h3>
-    <h3>Last name: <span id="lastName"></span></h3>
     <script src="./app.js"></script>
 </body>
 </html>
