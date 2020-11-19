@@ -1,6 +1,8 @@
 // variable used to make a request to the Eventbrite api
 let apiRequest = new XMLHttpRequest();
 
+const apiKey = "V5BCLVS6KYNORBVVVHXV";
+
 window.addEventListener("load", init);
 function init(){
     // Instascam copy/pasting from github
@@ -17,6 +19,15 @@ function init(){
     });
 }
 
+function getOrderID(data, length){
+    // gets the orderID 
+    let orderID= [];
+    for(let i = 0; i < length; i++){
+        orderID.push(data[i]);
+    }
+
+    return orderID.join('');
+}
 /**
  * @param {content} Data from the qr code
  *
@@ -27,18 +38,12 @@ function diplay(content){
     const data = document.getElementById("qrData");
     const orderIDField = document.getElementById("orderID");
 
-    // gets the orderID
-    let orderID= [];
-    for(let i = 0; i < 10; i++){
-        orderID.push(content[i]);
-    }
-
     // updates the data and orderID fields
     data.innerText = content;
-    orderIDField.innerText = orderID.join('');
-
+    orderIDField.innerText = getOrderID(content, 10);
+    
     // make a request to the Eventbrite api
-    getInfo(orderID.join(''), "E6UWJNINQFY3FOBKG37L");
+    getInfo(getOrderID(content, 10), content, apiKey);
 }
 
 /**
@@ -47,39 +52,44 @@ function diplay(content){
  *
  * Function that execute a GET request to the Eventbrite api
  */
-function getInfo(orderID, apiKey){
-    apiRequest.onreadystatechange = displayInfo;
-    apiRequest.open('GET', `https://www.eventbriteapi.com/v3/users/me/?token=${apiKey}`);
+function getInfo(orderID, content, token){
+    apiRequest.onreadystatechange = () => displayInfo(content);
+    apiRequest.open('GET', `https://www.eventbriteapi.com/v3/orders/${orderID}/?token=${token}`);
     apiRequest.send();
-
-// curl -X GET   https://www.eventbriteapi.com/v3/orders/orderID/ -H 'Authorization: Bearer E6UWJNINQFY3FOBKG37L'
 }
 
 // Function that displays the first and last name from the api request
-function displayInfo(){
+function displayInfo(content){
     // gets the refence of the first and last name fields
     const firstNameField = document.getElementById("firstName");
     const lastNameField = document.getElementById("lastName");
 
     let firstName = "";
     let lastName = "";
+    let reply = {};
 
     // check for errors
     if(apiRequest.readyState === XMLHttpRequest.DONE){
         if(apiRequest.status === 200){
+            // convert the text response to an object
+            reply = JSON.parse(apiRequest.responseText);
+
             // gets the first and last name
-            firstName = JSON.parse(apiRequest.responseText).first_name;
-            lastName = JSON.parse(apiRequest.responseText).last_name;
+            firstName = reply.first_name;
+            lastName = reply.last_name;
+
+            // displays the first and last name
+            firstNameField.innerText = firstName;
+            lastNameField.innerText = lastName;
         }
         else{
             console.log("Error returned: ", apiRequest.status);
+            console.log("Trying other orderID format.")
+            getInfo(getOrderID(content, 9), content, apiKey);
         }
     }
     else{
         console.log("Request not finished yet.");
     }
 
-    // displays the first and last name
-    firstNameField.innerText = firstName;
-    lastNameField.innerText = lastName;
 }
