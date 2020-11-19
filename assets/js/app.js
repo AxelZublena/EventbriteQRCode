@@ -1,10 +1,13 @@
 // variable used to make a request to the Eventbrite api
 let apiRequest = new XMLHttpRequest();
 
-const apiKey = "V5BCLVS6KYNORBVVVHXV";
+let apiKey = "";
 
 window.addEventListener("load", init);
 function init(){
+    
+    apiKey = prompt("Please insert your private API key:");
+
     // Instascam copy/pasting from github
     let scanner = new Instascan.Scanner({ video: document.getElementById('webcam') });
     scanner.addListener('scan', diplay);
