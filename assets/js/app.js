@@ -1,12 +1,21 @@
 // variable used to make a request to the Eventbrite api
 let apiRequest = new XMLHttpRequest();
 
-let apiKey = "";
+let requestCount = 0;
+
+document.querySelector("body").addEventListener("keydown", (event) => {
+    if(event.key === "a"){
+        setApiKey();
+    }
+    else{
+        console.log(event.key);
+    }
+});
 
 window.addEventListener("load", init);
 function init(){
-    
-    apiKey = prompt("Please insert your private API key:");
+
+    getApiKey();
 
     // Instascam copy/pasting from github
     let scanner = new Instascan.Scanner({ video: document.getElementById('webcam') });
@@ -20,6 +29,23 @@ function init(){
     }).catch(function (e) {
         console.error(e);
     });
+}
+
+function setApiKey(){
+    let apiKey = null;
+    while(apiKey === null){
+        console.log("No API key stored in the computer.");
+        apiKey = prompt("Please insert your private API key:");
+        localStorage.setItem("apiKey", apiKey);
+    }
+}
+function getApiKey(){
+    let apiKey = localStorage.getItem("apiKey");
+    if(apiKey === null || apiKey === ""){
+        setApiKey();
+        apiKey = localStorage.getItem("apiKey");
+    }
+    return apiKey;
 }
 
 function getOrderID(data, length){
@@ -46,7 +72,7 @@ function diplay(content){
     orderIDField.innerText = getOrderID(content, 10);
     
     // make a request to the Eventbrite api
-    getInfo(getOrderID(content, 10), content, apiKey);
+    getInfo(getOrderID(content, 10), content, getApiKey());
 }
 
 /**
@@ -87,8 +113,15 @@ function displayInfo(content){
         }
         else{
             console.log("Error returned: ", apiRequest.status);
-            console.log("Trying other orderID format.")
-            getInfo(getOrderID(content, 9), content, apiKey);
+
+            if(requestCount <= 3){
+                console.log("Trying other orderID format.")
+                getInfo(getOrderID(content, 9), content, getApiKey());
+                requestCount++;
+            }
+            else{
+                requestCount = 0;
+            }
         }
     }
     else{
