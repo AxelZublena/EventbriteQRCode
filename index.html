@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,18 +14,29 @@
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <title>QR Code Reader</title>
 </head>
+
 <body>
-    <div id="tile">
-        <video id="webcam" autoplay></video>
-        <div class="nameInfo">
-            <h4>First name: <span id="firstName"></span></h4>
-            <h4>Last name: <span id="lastName"></span></h4>
+    <div id="title">
+        <div id="text">
+            <div id="nameInfo">
+            <h1>Welkom <span id="firstName"></span> <span id="lastName"></span></h1>
+            <h1>Je wordt verwacht in <span id="location"></span></h1>
         </div>
-        <div class="dataInfo">
-            <p>Data: <span id="qrData"></span></p>
-            <p>Order ID: <span id="orderID"></span></p>
+        </div>
+        <div id="hzLogo"><img src="assets/images/hzlogo.png" alt="hzlogo"></div>
+        <div id="camera"><video id="webcam" autoplay></video></div>
+        <div id="stripe">
+            <div id="square"></div>
+            <div id="triangle-topleft"></div>
         </div>
     </div>
+
+    <div class="dataInfo" style="visibility: hidden">
+        <p>Data: <span id="qrData"></span></p>
+        <p>Order ID: <span id="orderID"></span></p>
+    </div>
+
     <script src="./assets/js/app.js"></script>
 </body>
+
 </html>

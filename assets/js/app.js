@@ -123,9 +123,20 @@ function displayInfo(content){
                 requestCount = 0;
             }
         }
+        giveLocation(firstName);
     }
     else{
         console.log("Request not finished yet.");
     }
 
+}
+
+/**
+ * hardcoded stuff to bind locations to a name
+ * @param {firstname} name name of the person
+ */
+function giveLocation(name){
+    if(name == "Hans" || name == "Bart" || name == "Saif" || name == "Jesper" || name == "Lucas" || name == "Rick" || name == "Bas"){
+        document.getElementById("location").innerText = "GW310"
+    }
 }

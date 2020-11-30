@@ -1,57 +1,54 @@
 body{
     font-family: 'Ubuntu', sans-serif;
-    display: grid;
 }
 
-#tile{
-    background-color: ghostwhite;
-    box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
-    border-radius: 5%;
-
-    width: 550px;
-    display: block;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.nameInfo {
-    width: 550px;
-    padding-bottom: 10px;
-    padding-top: 15px;
-
-    justify-content: center;
-    display:grid;
-}
-.nameInfo h4 {
-    font-size: 30px;
-    font-weight: 500;
-    color: dodgerblue;
-    margin: 10px;
-}
-.nameInfo span{
-    color: black;
-    padding-left: 20px;
-}
-
-.dataInfo{
-    justify-content: center;
-    display: grid;
-    grid-template-columns: 225px 225px;
-}
-.dataInfo p {
-    justify-self: center;
-    font-size: 12px;
-}
-
-/*Image transformation*/
 #webcam{
     object-fit: cover;
-    height: 550px;
-    width: 550px;
-    border-radius: 5% 5% 0% 0%;
+    height: 200px;
+    width: 200px;
+    border-radius: 2% 2% 2% 2%;
     border-color: #DDDDDD;
     border-width: 0px;
     border-style: solid;
+}
+
+#camera{
+    position: fixed;
+    bottom: 1%;
+    left: 1%;
+}
+
+#hzLogo {
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+}
+
+#text {
+    font-size: 2rem;
+    transform: translateY(150%);
+    text-align: center;
+}
+
+span {
+    color: #0093D5;
+}
+
+#stripe {
+    position: absolute;
+    top: 0%;
+    right: 20%;
+}
+
+#triangle-topleft {
+    width: 0;
+    height: 0;
+    border-top: 30px solid #005C95;
+    border-right: 150px solid transparent;
+}
+
+#square {
+    width: 150px;
+    height: 120px;
+    background: #005C95;
 }
