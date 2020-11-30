@@ -1,4 +1,4 @@
-body{
+/* body{
     font-family: 'Ubuntu', sans-serif;
     display: grid;
 }
@@ -46,7 +46,7 @@ body{
 }
 
 /*Image transformation*/
-#webcam{
+/* #webcam{
     object-fit: cover;
     height: 550px;
     width: 550px;
@@ -54,4 +54,58 @@ body{
     border-color: #DDDDDD;
     border-width: 0px;
     border-style: solid;
+} */ 
+body{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#webcam{
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 2% 2% 2% 2%;
+    border-color: #DDDDDD;
+    border-width: 0px;
+    border-style: solid;
+}
+
+#camera{
+    position: fixed;
+    bottom: 1%;
+    left: 1%;
+}
+
+#hzLogo {
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+}
+
+#text {
+    font-size: 2rem;
+    transform: translateY(100%);
+    text-align: center;
+}
+
+span {
+    color: #0093D5;
+}
+
+#stripe {
+    position: absolute;
+    top: 0%;
+    right: 20%;
+}
+
+#triangle-topleft {
+    width: 0;
+    height: 0;
+    border-top: 30px solid #005C95;
+    border-right: 150px solid transparent;
+}
+
+#square {
+    width: 150px;
+    height: 120px;
+    background: #005C95;
 }
