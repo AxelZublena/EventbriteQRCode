@@ -1,0 +1,22 @@
+{
+  "name": "eventbriteqrcode",
+  "version": "1.0.0",
+  "description": "EventbriteQRCode is a javascript web application developed by students from HZ University of Applied Sciences.\\ It allows you to read and display the data held by a QR code and to indicate the first and last name of its owner.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxelZublena/EventbriteQRCode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AxelZublena/EventbriteQRCode/issues"
+  },
+  "homepage": "https://github.com/AxelZublena/EventbriteQRCode#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
